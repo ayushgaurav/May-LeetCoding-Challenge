@@ -1,0 +1,22 @@
+// https://leetcode.com/problems/ransom-note/
+
+class Solution {
+public:
+    bool canConstruct(string ransomNote, string magazine) {
+        
+        std::ios_base::sync_with_stdio(false);// optional
+        cin.tie(NULL);// optional these two lines are optional are used to improve input and outpust speed
+        
+        vector<int> a(26,0);
+        
+        for(char i:magazine)
+            a[i-'a']++;
+        for(char i:ransomNote)
+        {
+            a[i-'a']--;
+            if(a[i-'a']<0)
+                return false;
+        }
+        return true;
+    }
+};
