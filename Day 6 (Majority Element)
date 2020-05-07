@@ -1,0 +1,42 @@
+//https://leetcode.com/problems/majority-element/
+
+
+// Approach 1 Moore voting algo
+
+class Solution {
+public:
+    int majorityElement(vector<int>& nums) {
+        int e,c=0;
+        for(int i:nums)
+        {
+            if(c==0)
+                e=i;
+            if(e==i)
+                c++;
+            else
+                c--;    
+        }
+        return e;
+    }
+};
+
+// Approach 2 Unordered_map
+
+class Solution {
+public:
+    int majorityElement(vector<int>& nums) {
+        
+        unordered_map<int,int> um;
+        
+        int n=nums.size();
+        int i;
+        for(i=0;i<n;i++)
+        {
+            um[nums[i]]++;
+            if(um[nums[i]]>(n/2))
+               return nums[i];
+        }
+         return 0;  
+    }
+ 
+};
