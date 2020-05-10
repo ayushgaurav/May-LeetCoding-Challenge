@@ -1,0 +1,13 @@
+//https://leetcode.com/problems/valid-perfect-square/
+
+
+class Solution {
+public:
+    bool isPerfectSquare(int num) {
+        
+        if(int(sqrt(num))*int(sqrt(num))== num)
+            return true;
+        return false;
+        
+    }
+};
