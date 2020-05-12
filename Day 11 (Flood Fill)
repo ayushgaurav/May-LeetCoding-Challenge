@@ -1,0 +1,34 @@
+// https://leetcode.com/problems/flood-fill/
+
+
+class Solution {
+public:
+    
+    void color(vector<vector<int>>& image,int sr,int sc, int newColor,int r,int c,int x)
+    {
+        if(sr<0||sr>=r)
+          return ;
+        if(sc<0||sc>=c)
+            return ;
+        if(image[sr][sc]!=x)
+            return;
+        image[sr][sc]=newColor;
+        color(image,sr+1,sc,newColor,r,c,x);
+        color(image,sr-1,sc,newColor,r,c,x);
+        color(image,sr,sc+1,newColor,r,c,x);
+        color(image,sr,sc-1,newColor,r,c,x);
+    }
+    
+    vector<vector<int>> floodFill(vector<vector<int>>& image, int sr, int sc, int newColor) {
+        
+        int r=image.size();
+        int c=image[0].size();
+        int x=image[sr][sc];
+        if(x==newColor)
+            return image;
+        color(image,sr,sc,newColor,r,c,x);
+        
+        return image;
+        
+    }
+};
