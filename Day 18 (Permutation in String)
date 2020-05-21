@@ -1,0 +1,31 @@
+// https://leetcode.com/problems/permutation-in-string/
+
+class Solution {
+public:
+    bool checkInclusion(string s1, string s2) {
+        int n1=s1.length(),n2=s2.length();
+        vector<int> a(26,0);
+        vector<int> b(26,0);
+        int i;
+        if(n2<n1)
+            return false;
+        for(i=0;i<n1;i++)
+        {
+            a[s1[i]-'a']++;
+            b[s2[i]-'a']++;
+        }
+        
+        if(a==b)
+            return true;
+        for(i=n1;i<n2;i++)
+        {
+            b[s2[i]-'a']++;
+            b[s2[i-n1]-'a']--;
+            if(a==b)
+                return true;
+        }
+        
+        return false;
+        
+    }
+};
