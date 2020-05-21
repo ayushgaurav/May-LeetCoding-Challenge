@@ -1,0 +1,31 @@
+// https://leetcode.com/problems/maximum-sum-circular-subarray/
+
+
+
+
+class Solution {
+public:
+    int maxSubarraySumCircular(vector<int>& A) {
+        
+        std::ios_base::sync_with_stdio(false);
+        cin.tie(NULL);
+
+
+        int n=A.size();
+        int cmax=0,cmin=0,ma=INT_MIN,mi=INT_MAX,t=0;
+        for(int i:A)
+        {
+            cmax=max(cmax+i,i);
+            ma=max(ma,cmax);
+            
+            cmin=min(cmin+i,i);
+            mi=min(mi,cmin);
+            t+=i;
+        }
+        
+        if(ma<0)
+            return ma;
+        return max(ma,t-mi);
+        
+    }
+};
