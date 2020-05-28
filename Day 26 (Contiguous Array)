@@ -1,0 +1,30 @@
+// https://leetcode.com/problems/contiguous-array/
+
+
+
+class Solution {
+public:
+    int findMaxLength(vector<int>& nums) {
+        
+        std::ios_base::sync_with_stdio(false);
+        cin.tie(NULL);
+        
+        int n=nums.size();
+        int c=0,i;
+        unordered_map<int,int> a;
+        int m=0;
+        a[0]=-1;
+        for(i=0;i<n;i++)
+        {
+            if(nums[i]==0)
+                c+=-1;
+            else
+                c+=1;
+            if(a.find(c)!=a.end())
+                m=max(m,i-a[c]);
+            else
+                a[c]=i;
+        }
+        return m;
+    }
+};
